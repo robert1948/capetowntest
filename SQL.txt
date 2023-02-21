@@ -1,0 +1,19 @@
+docker pull mysql
+docker run --name polls -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
+docker exec -it polls mysql -uroot -pStinkie@1948
+create database polls;
+use polls;
+create table polls (id int not null auto_increment, question varchar(200), primary key (id));
+create table choices (id int not null auto_increment, choice_text varchar(200), votes int, poll_id int, primary key (id));
+create table votes (id int not null auto_increment, choice_id int, poll_id int, primary key (id));
+show tables;
+exit
+docker ps
+docker stop polls
+docker rm polls
+docker run --name polls -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
+docker exec -it polls mysql -uroot -pStinkie@1948
+use polls;
+show tables;
+exit
+docker ps
